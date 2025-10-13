@@ -1,0 +1,40 @@
+services:
+    app:
+        image: ghcr.io/sylius/sylius-php:8.3-fixuid-alpine
+        environment:
+            APP_ENV: "dev"
+            DATABASE_URL: "mysql://root:mysql@mysql/macbim_sylius_gift_card_plugin_%kernel.environment%?charset=utf8mb4"
+            PHP_DATE_TIMEZONE: "Europe/Paris"
+        volumes:
+            - ./:/srv/sylius:delegated
+            - ./.docker/php/php.ini:/etc/php8/php.ini:delegated
+        depends_on:
+            - mysql
+        networks:
+            - sylius
+
+    nginx:
+        image: nginx:alpine
+        ports:
+            - ${APP_PORT:-8080}:80
+        volumes:
+            - ./:/srv/sylius:delegated
+            - ./.docker/nginx/nginx.conf:/etc/nginx/nginx.conf:delegated
+        depends_on:
+            - app
+        networks:
+            - sylius
+
+    mysql:
+        image: mysql:8.0
+        platform: linux/amd64
+        environment:
+            MYSQL_ROOT_PASSWORD: mysql
+        ports:
+            - ${MYSQL_PORT:-3306}:3306
+        networks:
+            - sylius
+
+networks:
+    sylius:
+        driver: bridge

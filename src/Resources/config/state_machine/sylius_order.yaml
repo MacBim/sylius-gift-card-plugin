@@ -1,0 +1,16 @@
+winzou_state_machine:
+    sylius_order:
+        callbacks:
+            after:
+                macbim_sylius_gift_cards_create_gift_card:
+                    on: [ "fulfill" ]
+                    do: [ '@macbim.gift_card_plugin.workflow.create_gift_cards' ]
+                    args: [ "object" ]
+                macbim_sylius_gift_cards_decrement_used_gift_card_amount:
+                    on: [ "fulfill" ]
+                    do: [ '@macbim.gift_card_plugin.workflow.decrement_amount' ]
+                    args: [ "object" ]
+                macbim_sylius_gift_cards_increment_used_gift_card_amount:
+                    on: [ "cancel" ]
+                    do: [ '@macbim.gift_card_plugin.workflow.increase_amount' ]
+                    args: [ "object" ]

@@ -1,0 +1,26 @@
+<div class="ui grid">
+    <div class="eight wide column">
+        <div class="ui segment">
+            {{ form_row(form.code) }}
+            {{ form_row(form.enabled) }}
+        </div>
+
+    </div>
+    <div class="eight wide column">
+        <div class="ui segment">
+            {{ form_row(form.channel) }}
+            {{ form_row(form.customer) }}
+        </div>
+    </div>
+</div>
+<div class="ui segment">
+    <div class="ui grid">
+        <div class="eight wide column">
+            {{ form_row(form.currencyCode) }}
+            {{ form_row(form.amount) }}
+        </div>
+        <div class="eight wide column">
+            {{ form_row(form.expiresAt) }}
+        </div>
+    </div>
+</div>

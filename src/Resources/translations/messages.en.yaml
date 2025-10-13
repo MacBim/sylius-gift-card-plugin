@@ -1,0 +1,23 @@
+macbim_sylius_gift_cards:
+    ui:
+        gift_cards: 
+            header: Gift cards
+            subheader: Manage your gift cards
+        channel_configuration:
+            header: Gift card channel configuration
+            subheader: Configure gift card by channels
+    form:
+        gift_card:
+            customer: Customer
+            expires_at: Expires at
+            code: Code
+            currency_code: Currency
+            amount: Amount
+            initial_amount: Initial amount
+            enabled: Enabled
+        gift_card_channel_configuration:
+            expiration_delay: Expiration delay
+            expiration_delay_help: 'Example of expiration delay: <br> <ul><li>2 year</li><li>1 month</li><li>2 months</li><li>20 days</li></ul>'
+        product:
+            is_gift_card: Is considered as a gift card
+            

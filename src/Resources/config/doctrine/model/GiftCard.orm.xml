@@ -1,0 +1,41 @@
+<doctrine-mapping xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <mapped-superclass name="Macbim\SyliusGiftCardsPlugin\Model\GiftCard"
+                       table="macbim_sylius_gift_cards_gift_card">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="code" unique="true" column="code"/>
+        <field name="enabled" type="boolean" column="enabled"/>
+        <field name="amount" type="integer" column="amount"/>
+        <field name="initialAmount" type="integer" column="initial_amount"/>
+        <field name="currencyCode" length="3" column="currency_code"/>
+        <field name="expiresAt" type="datetime_immutable" nullable="true" column="expires_at"/>
+
+        <field name="createdAt" column="created_at" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
+            <gedmo:timestampable on="update"/>
+        </field>
+
+        <many-to-one field="customer" target-entity="Sylius\Component\Customer\Model\CustomerInterface">
+            <join-column name="customer_id" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
+        </many-to-one>
+
+        <many-to-one field="orderItemUnit" target-entity="Sylius\Component\Core\Model\OrderItemUnitInterface">
+            <join-column name="order_item_unit_id" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
+        </many-to-one>
+
+        <many-to-one field="channel" target-entity="Sylius\Component\Channel\Model\ChannelInterface">
+            <join-column name="channel_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+        </many-to-one>
+
+        <many-to-many field="appliedOrders" target-entity="Sylius\Component\Order\Model\OrderInterface"
+                      inversed-by="appliedGiftCards">
+            <join-table name="macbim_sylius_gift_cards_order"/>
+        </many-to-many>
+    </mapped-superclass>
+</doctrine-mapping>

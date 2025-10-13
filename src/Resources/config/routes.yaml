@@ -1,0 +1,9 @@
+macbim_sylius_gift_cards_shop:
+    resource: "@MacbimSyliusGiftCardsPlugin/Resources/config/routes/shop_routing.yaml"
+    prefix: /{_locale}
+    requirements:
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
+
+macbim_sylius_gift_cards_admin:
+    resource: "@MacbimSyliusGiftCardsPlugin/Resources/config/routes/admin_routing.yaml"
+    prefix: /admin

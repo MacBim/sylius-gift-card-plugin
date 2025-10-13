@@ -1,0 +1,37 @@
+macbim_sylius_gift_cards_admin_gift_card:
+    resource: |
+        alias: macbim_sylius_gift_cards.gift_card
+        section: admin
+        permission: true
+        only: [index, create, update, delete, bulkDelete]
+        templates: '@SyliusAdmin\\Crud'
+        redirect: index
+        grid: macbim_sylius_gift_cards_admin_gift_card
+        vars:
+            all:
+                header: macbim_sylius_gift_cards.ui.gift_cards.header
+                subheader: macbim_sylius_gift_cards.ui.gift_cards.subheader
+                templates:
+                    form: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCard/_form.html.twig"
+            index:
+                icon: 'credit card outline'
+    type: sylius.resource
+    
+macbim_sylius_gift_cards_admin_gift_card_channel_configuration:
+    resource: |
+        alias: macbim_sylius_gift_cards.gift_card_channel_configuration
+        section: admin
+        permission: true
+        only: [index, create, update, delete, bulkDelete]
+        templates: '@SyliusAdmin\\Crud'
+        redirect: index
+        grid: macbim_sylius_gift_cards_admin_gift_card_channel_configuration
+        vars:
+            all:
+                header: macbim_sylius_gift_cards.ui.channel_configuration.header
+                subheader: macbim_sylius_gift_cards.ui.channel_configuration.subheader
+                templates:
+                    form: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCardChannelConfiguration/_form.html.twig"
+            index:
+                icon: 'cogs'
+    type: sylius.resource

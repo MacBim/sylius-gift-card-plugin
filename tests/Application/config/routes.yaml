@@ -1,0 +1,2 @@
+macbim_sylius_gift_cards:
+    resource: "@MacbimSyliusGiftCardsPlugin/Resources/config/routes.yaml"

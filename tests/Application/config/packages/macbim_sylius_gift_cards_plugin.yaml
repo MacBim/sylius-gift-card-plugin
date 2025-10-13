@@ -1,0 +1,3 @@
+imports:
+    - { resource: "@MacbimSyliusGiftCardsPlugin/Resources/config/config.yaml" }
+    

@@ -1,0 +1,67 @@
+sylius_grid:
+    grids:
+        macbim_sylius_gift_cards_admin_gift_card:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: '%macbim_sylius_gift_cards.model.gift_card.class%'
+                    repository:
+                        method: createListQueryBuilder
+            sorting:
+                createdAt: desc
+            filters:
+                code:
+                    type: string
+                    label: sylius.ui.code
+                enabled:
+                    type: boolean
+                    label: sylius.ui.enabled
+                customer:
+                    type: string
+                    label: sylius.ui.customer
+                    options:
+                        fields: [ customer.email, customer.firstName, customer.lastName ]
+                date:
+                    type: date
+                    label: sylius.ui.date
+                    options:
+                        field: createdAt
+                        inclusive_to: true
+
+            fields:
+                code:
+                    type: string
+                    label: sylius.ui.code
+                    sortable: ~
+                createdAt:
+                    type: datetime
+                    label: sylius.ui.created
+                    sortable: ~
+                    options:
+                        format: '%macbim_sylius_gift_cards.grid.date_format%'
+                customer:
+                    type: twig
+                    label: sylius.ui.customer
+                    options:
+                        template: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCard/Grid/Field/customer.html.twig"
+                amount:
+                    type: twig
+                    label: macbim_sylius_gift_cards.form.gift_card.amount
+                    path: .
+                    sortable: amount
+                    options:
+                        template: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCard/Grid/Field/amount.html.twig"
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    options:
+                        template: "@SyliusUi/Grid/Field/enabled.html.twig"
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

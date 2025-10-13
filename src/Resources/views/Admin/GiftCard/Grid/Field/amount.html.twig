@@ -1,0 +1,16 @@
+{# data \Macbim\SyliusGiftCardsPlugin\Model\GiftCard\GiftCardInterface #}
+
+{% import "@SyliusAdmin/Common/Macro/money.html.twig" as money %}
+
+<div class="ui list">
+    <div class="item">
+        <div class="description">
+            {{ 'macbim_sylius_gift_cards.form.gift_card.amount'|trans }} : {{ money.format(data.amount, data.currencyCode) }}
+        </div>
+    </div>
+    <div class="item">
+        <div class="description">
+            {{ 'macbim_sylius_gift_cards.form.gift_card.initial_amount'|trans }} : {{ money.format(data.initialAmount, data.currencyCode) }}
+        </div>
+    </div>
+</div>
