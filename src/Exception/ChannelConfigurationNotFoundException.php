@@ -6,5 +6,4 @@ namespace Macbim\SyliusGiftCardsPlugin\Exception;
 
 class ChannelConfigurationNotFoundException extends \Exception
 {
-
 }

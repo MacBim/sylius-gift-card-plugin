@@ -1,8 +1,0 @@
-winzou_state_machine:
-    sylius_payment:
-        callbacks:
-            after:
-                sylius_process_order:
-                    on: [ "refund" ]
-                    do: [ "@sylius.order_processing.order_payment_processor.after_checkout", "process" ]
-                    args: [ "object.getOrder()" ]

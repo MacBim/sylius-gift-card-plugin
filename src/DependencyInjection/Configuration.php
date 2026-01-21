@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Macbim\SyliusGiftCardsPlugin\DependencyInjection;
 
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardFactory;
 use Macbim\SyliusGiftCardsPlugin\Form\Type\GiftCardChannelConfigurationType;
 use Macbim\SyliusGiftCardsPlugin\Form\Type\GiftCardType;
 use Macbim\SyliusGiftCardsPlugin\Model\GiftCard;
@@ -55,7 +54,7 @@ final class Configuration implements ConfigurationInterface
 
     private function addGiftCardResourceSection(NodeBuilder $resourcesNode): void
     {
-        /** @psalm-suppress MixedMethodCall,PossiblyNullReference,UndefinedInterfaceMethod,PossiblyUndefinedMethod */
+        /* @psalm-suppress MixedMethodCall,PossiblyNullReference,UndefinedInterfaceMethod,PossiblyUndefinedMethod */
         $resourcesNode
             ->arrayNode('gift_card')
                 ->addDefaultsIfNotSet()
@@ -74,7 +73,7 @@ final class Configuration implements ConfigurationInterface
 
     private function addGiftCardChannelConfigurationResourceSection(NodeBuilder $resourcesNode): void
     {
-        /** @psalm-suppress MixedMethodCall,PossiblyNullReference,UndefinedInterfaceMethod,PossiblyUndefinedMethod */
+        /* @psalm-suppress MixedMethodCall,PossiblyNullReference,UndefinedInterfaceMethod,PossiblyUndefinedMethod */
         $resourcesNode
             ->arrayNode('gift_card_channel_configuration')
                 ->addDefaultsIfNotSet()

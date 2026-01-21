@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Macbim\SyliusGiftCardsPlugin\Form\Type;
 
-use DateMalformedStringException;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
@@ -17,29 +16,29 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-class GiftCardChannelConfigurationType extends AbstractResourceType
+final class GiftCardChannelConfigurationType extends AbstractResourceType
 {
     public function __construct(
-        string                                   $dataClass,
+        string $dataClass,
         private readonly ChannelContextInterface $channelContext,
-        array                                    $validationGroups = [],
-    )
-    {
+        array $validationGroups = [],
+    ) {
         parent::__construct($dataClass, $validationGroups);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $dateValidationCallback = function ($value, ExecutionContextInterface $context) {
-            if ($value === null) {
+        $dateValidationCallback = static function ($value, ExecutionContextInterface $context) {
+            if (null === $value) {
                 return;
             }
 
             try {
                 $check = new \DateTime($value);
-            } catch (DateMalformedStringException) {
+            } catch (\DateMalformedStringException) {
                 $context
-                    ->buildViolation('macbim_sylius_gift_cards.form.gift_card_channel_configuration.expiration_delay_invalid')
+                    ->buildViolation('macbim_sylius_gift_cards.gift_card_channel_configuration.expiration_delay_invalid')
+                    ->setTranslationDomain('validators')
                     ->atPath('expirationDelay')
                     ->addViolation();
             }
@@ -53,8 +52,8 @@ class GiftCardChannelConfigurationType extends AbstractResourceType
             ->add('expirationDelay', TextType::class, [
                 'label' => 'macbim_sylius_gift_cards.form.gift_card_channel_configuration.expiration_delay',
                 'constraints' => [
-                    new Callback($dateValidationCallback, $this->validationGroups)
-                ]
+                    new Callback($dateValidationCallback),
+                ],
             ])
             ->add('channel', ChannelChoiceType::class, [
                 'label' => 'sylius.ui.channel',

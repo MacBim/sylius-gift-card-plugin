@@ -24,7 +24,7 @@ class GiftCardAmountModifier implements GiftCardAmountModifierInterface
 
     public function increaseAmount(GiftCardInterface $giftCard, int $amount): void
     {
-        $amount = min($giftCard->getAmount() + $amount, $giftCard->getInitialAmount());
+        $amount = min($giftCard->getAmount() + $amount, $giftCard->getInitialAmount() ?? 0);
 
         $giftCard->setAmount($amount);
     }

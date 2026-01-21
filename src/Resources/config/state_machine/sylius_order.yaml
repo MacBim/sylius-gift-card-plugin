@@ -4,13 +4,17 @@ winzou_state_machine:
             after:
                 macbim_sylius_gift_cards_create_gift_card:
                     on: [ "fulfill" ]
-                    do: [ '@macbim.gift_card_plugin.workflow.create_gift_cards' ]
+                    do: [ '@macbim_gift_card_plugin.workflow.create_gift_cards', '__invoke' ]
                     args: [ "object" ]
                 macbim_sylius_gift_cards_decrement_used_gift_card_amount:
                     on: [ "fulfill" ]
-                    do: [ '@macbim.gift_card_plugin.workflow.decrement_amount' ]
+                    do: [ '@macbim_gift_card_plugin.workflow.decrement_amount', '__invoke' ]
                     args: [ "object" ]
                 macbim_sylius_gift_cards_increment_used_gift_card_amount:
                     on: [ "cancel" ]
-                    do: [ '@macbim.gift_card_plugin.workflow.increase_amount' ]
+                    do: [ '@macbim_gift_card_plugin.workflow.increase_amount', '__invoke' ]
+                    args: [ "object" ]
+                macbim_sylius_gift_cards_disable_gift_cards_on_refund:
+                    on: [ "cancel" ]
+                    do: [ '@macbim_gift_card_plugin.workflow.disable_gift_cards_on_refund', '__invoke' ]
                     args: [ "object" ]

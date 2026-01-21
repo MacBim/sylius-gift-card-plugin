@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Macbim\SyliusGiftCardsPlugin\EventListener\Menu;
+namespace Macbim\SyliusGiftCardsPlugin\EventListener\Menu\Admin;
 
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
@@ -11,7 +11,7 @@ class AdminMenuListener
     public function __invoke(MenuBuilderEvent $event): void
     {
         $marketingNode = $event->getMenu()->getChild('marketing');
-        if ($marketingNode === null) {
+        if (null === $marketingNode) {
             return;
         }
 

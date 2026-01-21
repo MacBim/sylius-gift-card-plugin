@@ -2,8 +2,8 @@
 
 namespace Macbim\SyliusGiftCardsPlugin\Repository;
 
-use Macbim\SyliusGiftCardsPlugin\Model\GiftCardChannelConfiguration;
 use Doctrine\ORM\QueryBuilder;
+use Macbim\SyliusGiftCardsPlugin\Model\GiftCardChannelConfiguration;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 
 /**

@@ -24,20 +24,12 @@ trait OrderTrait
      */
     public function getGiftCardsOrderItems(): Collection
     {
-        $giftCards = new ArrayCollection();
-
-        /** @var OrderItemInterface $orderItem */
-        foreach ($this->getItems() as $orderItem) {
-            /** @var ProductInterface $product */
+        return $this->getItems()->filter(function (OrderItemInterface $orderItem) {
+            /** @var ProductInterface|null $product */
             $product = $orderItem->getProduct();
-            if (!$product->isGiftCard()) {
-                continue;
-            }
 
-            $giftCards->add($orderItem);
-        }
-
-        return $giftCards;
+            return true === $product?->isGiftCard();
+        });
     }
 
     public function getAppliedGiftCards(): Collection

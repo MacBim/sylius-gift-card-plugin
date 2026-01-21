@@ -209,4 +209,12 @@ class GiftCard implements GiftCardInterface
 
         return $this;
     }
+
+    public function getOrder(): ?OrderInterface
+    {
+        /** @var OrderInterface|null $order */
+        $order = $this->getOrderItemUnit()?->getOrderItem()?->getOrder();
+
+        return $order;
+    }
 }

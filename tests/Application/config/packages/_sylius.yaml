@@ -22,3 +22,9 @@ sylius_order:
         order:
             classes:
                 model: Tests\Macbim\SyliusGiftCardsPlugin\Model\Order
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: Tests\Macbim\SyliusGiftCardsPlugin\Model\Product

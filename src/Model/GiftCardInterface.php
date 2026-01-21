@@ -55,4 +55,6 @@ interface GiftCardInterface extends ResourceInterface, CodeAwareInterface
     public function getOrderItemUnit(): ?OrderItemUnitInterface;
 
     public function setOrderItemUnit(?OrderItemUnitInterface $orderItemUnit): self;
+
+    public function getOrder(): ?OrderInterface;
 }

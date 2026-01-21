@@ -13,8 +13,7 @@ final class GiftCardOrderProcessor implements OrderProcessorInterface
 {
     public function __construct(
         private readonly GiftCardAdjustmentFactoryInterface $giftCardAdjustmentFactory,
-    )
-    {
+    ) {
     }
 
     public function process(BaseOrderInterface $order): void

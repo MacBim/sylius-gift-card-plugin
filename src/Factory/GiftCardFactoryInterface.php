@@ -2,7 +2,6 @@
 
 namespace Macbim\SyliusGiftCardsPlugin\Factory;
 
-
 use Macbim\SyliusGiftCardsPlugin\Model\GiftCardInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\OrderItemUnitInterface;

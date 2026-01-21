@@ -12,24 +12,25 @@ use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\OrderItemUnitInterface;
 use Sylius\Resource\Factory\FactoryInterface;
 
-class GiftCardFactory implements GiftCardFactoryInterface
+final class GiftCardFactory implements GiftCardFactoryInterface
 {
     /**
      * @param FactoryInterface<GiftCardInterface> $decoratedFactory
      */
     public function __construct(
-        private readonly FactoryInterface                              $decoratedFactory,
-        private readonly string                                        $defaultExpirationDelay,
-        private readonly GiftCardCodeGeneratorInterface                $giftCardCodeGenerator,
+        private readonly FactoryInterface $decoratedFactory,
+        private readonly string $defaultCurrencyCode,
+        private readonly string $defaultExpirationDelay,
+        private readonly GiftCardCodeGeneratorInterface $giftCardCodeGenerator,
         private readonly GiftCardChannelConfigurationProviderInterface $giftCardChannelConfigurationProvider,
-    )
-    {
+    ) {
     }
 
     public function createNew(): GiftCardInterface
     {
         $giftCard = $this->decoratedFactory->createNew();
         $giftCard->setCode($this->giftCardCodeGenerator->generate());
+        $giftCard->setCurrencyCode($this->defaultCurrencyCode);
 
         return $giftCard;
     }
@@ -53,8 +54,8 @@ class GiftCardFactory implements GiftCardFactoryInterface
             ->setEnabled(true)
             ->setCurrencyCode($currencyCode)
             ->setChannel($channel)
-            ->setAmount($orderItemUnit->getTotal())
             ->setInitialAmount($orderItemUnit->getTotal())
+            ->setAmount($orderItemUnit->getTotal())
             ->setExpiresAt(new \DateTimeImmutable(sprintf('+ %s', $expirationDelay)));
 
         return $giftCard;

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Macbim\SyliusGiftCardsPlugin\EventListener\Menu\AdminMenuListener;
+use Macbim\SyliusGiftCardsPlugin\EventListener\Menu\Admin\AdminMenuListener;
+use Macbim\SyliusGiftCardsPlugin\EventListener\Menu\Admin\ProductFormMenuBuilder;
+use Sylius\Bundle\AdminBundle\Menu\ProductFormMenuBuilder as SyliusProductFormMenuBuilder;
 
 return static function (ContainerConfigurator $container): void {
     $services = $container->services();
@@ -12,4 +14,8 @@ return static function (ContainerConfigurator $container): void {
     $services
         ->set('macbim_sylius_gift_cards.event_listener.gift_card.admin_menu', AdminMenuListener::class)
         ->tag('kernel.event_listener', ['event' => 'sylius.menu.admin.main']);
+
+    $services
+        ->set('macbim_sylius_gift_cards.event_listener.gift_card.admin_product_form_menu', ProductFormMenuBuilder::class)
+        ->tag('kernel.event_listener', ['event' => SyliusProductFormMenuBuilder::EVENT_NAME]);
 };

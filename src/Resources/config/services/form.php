@@ -7,6 +7,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Macbim\SyliusGiftCardsPlugin\Form\Extension\Product\ProductTypeExtension;
 use Macbim\SyliusGiftCardsPlugin\Form\Type\GiftCardChannelConfigurationType;
 use Macbim\SyliusGiftCardsPlugin\Form\Type\GiftCardType;
+use Sylius\Bundle\ProductBundle\Form\Type\ProductType;
 
 return static function (ContainerConfigurator $container): void {
     $parameters = $container->parameters();
@@ -33,5 +34,5 @@ return static function (ContainerConfigurator $container): void {
 
     $services
         ->set('macbim_sylius_gift_cards.form.extension.product', ProductTypeExtension::class)
-        ->tag('form.type_extension', ['extended_type' => (string)param('sylius.form.product.class')]);
+        ->tag('form.type_extension', ['extended_type' => ProductType::class, 'priority' => 150]);
 };

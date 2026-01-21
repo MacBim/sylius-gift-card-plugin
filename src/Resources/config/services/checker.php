@@ -11,7 +11,6 @@ use Macbim\SyliusGiftCardsPlugin\Checker\GiftCard\GiftCardEnabledEligibilityChec
 use Macbim\SyliusGiftCardsPlugin\Checker\GiftCard\GiftCardIsNotExpiredEligibilityChecker;
 
 return static function (ContainerConfigurator $container): void {
-
     $services = $container->services();
 
     $checkerTag = 'macbim_sylius_gift_cards.checker.gift_card_eligibility_checker';

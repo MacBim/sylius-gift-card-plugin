@@ -1,0 +1,7 @@
+{# data \Macbim\SyliusGiftCardsPlugin\Model\OrderInterface #}
+
+{% if data is null %}
+    {{ 'macbim_sylius_gift_cards.ui.gift_cards.manually_created'|trans }}
+{% else %}
+    <a href="{{ path('sylius_admin_order_show', {'id': data.id}) }}" target="_blank">#{{ data.number }}</a>
+{% endif %}

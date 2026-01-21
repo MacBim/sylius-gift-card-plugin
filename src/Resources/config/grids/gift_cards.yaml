@@ -51,6 +51,12 @@ sylius_grid:
                     sortable: amount
                     options:
                         template: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCard/Grid/Field/amount.html.twig"
+                order:
+                    type: twig
+                    label: sylius.ui.order
+                    path: order
+                    options:
+                        template: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCard/Grid/Field/order.html.twig"
                 enabled:
                     type: twig
                     label: sylius.ui.enabled

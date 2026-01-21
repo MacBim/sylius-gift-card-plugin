@@ -1,11 +1,20 @@
 macbim_sylius_gift_cards:
     ui:
+        gift_card: Gift card
         gift_cards: 
+            created_by_this_order: Gift cards created by this order
+            no_gift_cards_created_by_this_order: No gift cards have been created by this order
             header: Gift cards
             subheader: Manage your gift cards
+            manually_created: Manually created via the admin
         channel_configuration:
             header: Gift card channel configuration
             subheader: Configure gift card by channels
+        code: Code
+        initial_amount: Initial amount
+        amount: Amount
+        expires_at: Expires at
+        enabled: Enabled
     form:
         gift_card:
             customer: Customer
@@ -20,4 +29,4 @@ macbim_sylius_gift_cards:
             expiration_delay_help: 'Example of expiration delay: <br> <ul><li>2 year</li><li>1 month</li><li>2 months</li><li>20 days</li></ul>'
         product:
             is_gift_card: Is considered as a gift card
-            
+            is_gift_card_help: If checked, a gift card will be created when completing an order with this product. The amount of the created gift card will be equal to the price of the selected variant. It is recommended to disable shipping for the variants of a product configured as a gift card.

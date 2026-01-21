@@ -2,20 +2,19 @@
 
 namespace Macbim\SyliusGiftCardsPlugin\Workflow;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardFactoryInterface;
 use Macbim\SyliusGiftCardsPlugin\Model\OrderInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\CustomerInterface;
 use Sylius\Component\Core\Model\OrderItemUnitInterface;
 
-class CreateGiftCard
+final class CreateGiftCard
 {
     public function __construct(
         private readonly GiftCardFactoryInterface $giftCardFactory,
-        private readonly EntityManagerInterface   $entityManager,
-    )
-    {
+        private readonly EntityManagerInterface $entityManager,
+    ) {
     }
 
     public function __invoke(OrderInterface $order): void

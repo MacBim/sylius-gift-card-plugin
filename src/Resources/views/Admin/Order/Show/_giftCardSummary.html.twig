@@ -1,0 +1,55 @@
+{# order \Macbim\SyliusGiftCardsPlugin\Model\OrderInterface #}
+{# giftCard \Macbim\SyliusGiftCardsPlugin\Model\GiftCardInterface #}
+
+{% import "@SyliusAdmin/Common/Macro/money.html.twig" as money %}
+{% import '@SyliusUi/Macro/labels.html.twig' as label %}
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+
+{% set createdGiftCards = macbim_sylius_gift_cards_find_gift_card_for_order(order) %}
+
+<div class="ui hidden divider"></div>
+
+<h3 class="ui top attached header">
+    {{ 'macbim_sylius_gift_cards.ui.gift_cards.created_by_this_order'|trans }}
+</h3>
+<div class="ui attached segment">
+    {% if createdGiftCards is not empty %}
+        <table class="ui celled compact small table">
+            <thead>
+            <tr>
+                <th>{{ 'macbim_sylius_gift_cards.ui.code'|trans }}</th>
+                <th>{{ 'macbim_sylius_gift_cards.ui.initial_amount'|trans }}</th>
+                <th>{{ 'macbim_sylius_gift_cards.ui.amount'|trans }}</th>
+                <th>{{ 'macbim_sylius_gift_cards.ui.expires_at'|trans }}</th>
+                <th>{{ 'macbim_sylius_gift_cards.ui.enabled'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for giftCard in createdGiftCards %}
+                <tr>
+                    {% set giftCardPath = path('macbim_sylius_gift_cards_admin_gift_card_update', {'id': giftCard.id}) %}
+                    <td>
+                        <a href="{{ giftCardPath }}" target="_blank">{{ giftCard.code }}</a>
+                    </td>
+                    <td>
+                        {{ money.format(giftCard.initialAmount, giftCard.currencyCode) }}
+                    </td>
+                    <td>
+                        {{ money.format(giftCard.amount, giftCard.currencyCode) }}
+                    </td>
+                    <td>
+                        {% if giftCard.expiresAt is not null %}
+                            {{ giftCard.expiresAt|date('Y-m-d') }}
+                        {% endif %}
+                    </td>
+                    <td>{{ label.status(giftCard.enabled) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        {{ messages.info('macbim_sylius_gift_cards.ui.gift_cards.no_gift_cards_created_by_this_order') }}
+    {% endif %}
+
+</div>
+

@@ -7,8 +7,6 @@ namespace Macbim\SyliusGiftCardsPlugin;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
-use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class MacbimSyliusGiftCardsPlugin extends AbstractResourceBundle
 {
@@ -16,6 +14,9 @@ final class MacbimSyliusGiftCardsPlugin extends AbstractResourceBundle
 
     protected string $mappingFormat = self::MAPPING_XML;
 
+    /**
+     * @return string[]
+     */
     public function getSupportedDrivers(): array
     {
         return [

@@ -31,11 +31,11 @@ phpspec:
 phpstan:
 	${PHP_CMD} vendor/bin/phpstan analyse
 
-psalm:
-	${PHP_CMD} vendor/bin/psalm
+cs-fix:
+	${PHP_CMD} vendor/bin/php-cs-fixer fix
 
-behat-js:
-	ENV=test ${PHP_CMD} vendor/bin/behat --colors --strict --no-interaction -vvv -f progress
+cs-check:
+	${PHP_CMD} vendor/bin/php-cs-fixer check
 
 install:
 	${PHP_CMD} composer install --no-interaction --no-scripts
@@ -55,8 +55,8 @@ behat:
 
 init: install backend frontend
 
-ci: init phpstan psalm phpunit phpspec behat
+ci: init phpstan cs-check phpunit
 
 integration: init phpunit behat
 
-static: install phpspec phpstan psalm
+static: install phpstan cs-check

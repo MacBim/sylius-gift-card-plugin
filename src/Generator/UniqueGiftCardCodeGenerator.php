@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace Macbim\SyliusGiftCardsPlugin\Generator;
 
+use Random\RandomException;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 final class UniqueGiftCardCodeGenerator implements GiftCardCodeGeneratorInterface
 {
     public function __construct(
         private readonly RepositoryInterface $giftCardRepository,
-        private readonly int                 $codeLength,
-    )
-    {
+        private readonly int $codeLength,
+    ) {
     }
 
+    /**
+     * @throws RandomException
+     */
     public function generate(): string
     {
         do {
@@ -24,6 +27,9 @@ final class UniqueGiftCardCodeGenerator implements GiftCardCodeGeneratorInterfac
         return $code;
     }
 
+    /**
+     * @throws RandomException
+     */
     private function doGenerate(): string
     {
         $code = bin2hex(random_bytes($this->codeLength));

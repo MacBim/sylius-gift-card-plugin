@@ -1,0 +1,12 @@
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+
+<h3 class="ui top attached header">{{ 'macbim_sylius_gift_cards.ui.gift_card'|trans }}</h3>
+<div class="ui attached segment">
+    {{ form_row(form.isGiftCard) }}
+
+    <div class="ui hidden divider"></div>
+    {{ messages.info('macbim_sylius_gift_cards.form.product.is_gift_card_help') }}
+
+</div>
+
+{{ sylius_template_event(['macbim_sylius_gift_cards.admin.product.' ~ action ~ '.tab_gift_card', 'macbim_sylius_gift_cards.admin.product.tab_gift_card'], {'form': form}) }}

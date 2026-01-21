@@ -1,0 +1,4 @@
+macbim_sylius_gift_cards:
+    not_eligible: This gift card is not eligible for this cart.
+    gift_card_channel_configuration:
+        expiration_delay_invalid: The expiration delay is invalid.

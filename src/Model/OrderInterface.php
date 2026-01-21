@@ -23,5 +23,4 @@ interface OrderInterface extends BaseOrderInterface
     public function addAppliedGiftCard(GiftCardInterface $giftCard): self;
 
     public function removeAppliedGiftCard(GiftCardInterface $giftCard): self;
-
 }

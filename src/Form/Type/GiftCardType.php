@@ -17,14 +17,13 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GiftCardType extends AbstractResourceType
+final class GiftCardType extends AbstractResourceType
 {
     public function __construct(
-        string                               $dataClass,
+        string $dataClass,
         private readonly RepositoryInterface $currencyRepository,
-        array                                $validationGroups = [],
-    )
-    {
+        array $validationGroups = [],
+    ) {
         parent::__construct($dataClass, $validationGroups);
     }
 
@@ -50,6 +49,7 @@ class GiftCardType extends AbstractResourceType
                 'choice_value' => 'code',
             ])
             ->add('expiresAt', DateTimeType::class, [
+                'required' => false,
                 'label' => 'macbim_sylius_gift_cards.form.gift_card.expires_at',
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',

@@ -16,8 +16,7 @@ class CachedGiftChannelCardChannelConfigurationProvider implements GiftCardChann
 
     public function __construct(
         private readonly GiftCardChannelConfigurationRepositoryInterface $configurationRepository,
-    )
-    {
+    ) {
     }
 
     /**
