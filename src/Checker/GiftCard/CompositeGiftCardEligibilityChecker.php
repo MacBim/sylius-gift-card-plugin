@@ -18,6 +18,11 @@ class CompositeGiftCardEligibilityChecker implements GiftCardEligibilityCheckerI
 
     public function isEligible(GiftCardInterface $giftCard, OrderInterface $order): bool
     {
+        // This checker cannot be responsible for checking eligibility, as it relies on the other checkers.
+        if (0 === iterator_count($this->checkers)) {
+            return false;
+        }
+
         foreach ($this->checkers as $checker) {
             if (false === $checker->isEligible($giftCard, $order)) {
                 return false;

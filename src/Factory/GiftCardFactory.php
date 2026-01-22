@@ -11,6 +11,7 @@ use Macbim\SyliusGiftCardsPlugin\Provider\GiftCardChannelConfigurationProviderIn
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\OrderItemUnitInterface;
 use Sylius\Resource\Factory\FactoryInterface;
+use Symfony\Component\Clock\ClockInterface;
 
 final class GiftCardFactory implements GiftCardFactoryInterface
 {
@@ -23,6 +24,7 @@ final class GiftCardFactory implements GiftCardFactoryInterface
         private readonly string $defaultExpirationDelay,
         private readonly GiftCardCodeGeneratorInterface $giftCardCodeGenerator,
         private readonly GiftCardChannelConfigurationProviderInterface $giftCardChannelConfigurationProvider,
+        private readonly ClockInterface $clock,
     ) {}
 
     public function createNew(): GiftCardInterface
@@ -47,15 +49,17 @@ final class GiftCardFactory implements GiftCardFactoryInterface
             $expirationDelay = $this->defaultExpirationDelay;
         }
 
+        $amount = $orderItemUnit->getTotal();
+
         $giftCard = $this->createNew();
         $giftCard
             ->setOrderItemUnit($orderItemUnit)
             ->setEnabled(true)
             ->setCurrencyCode($currencyCode)
             ->setChannel($channel)
-            ->setInitialAmount($orderItemUnit->getTotal())
-            ->setAmount($orderItemUnit->getTotal())
-            ->setExpiresAt(new \DateTimeImmutable(sprintf('+ %s', $expirationDelay)));
+            ->setInitialAmount($amount)
+            ->setAmount($amount)
+            ->setExpiresAt($this->clock->now()->modify(sprintf('+%s', $expirationDelay)));
 
         return $giftCard;
     }

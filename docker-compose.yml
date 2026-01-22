@@ -27,7 +27,6 @@ services:
 
     mysql:
         image: mysql:8.0
-        platform: linux/amd64
         environment:
             MYSQL_ROOT_PASSWORD: mysql
         ports:

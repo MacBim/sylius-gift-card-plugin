@@ -24,7 +24,8 @@ return static function (ContainerConfigurator $container): void {
         ->arg('$defaultCurrencyCode', param('macbim_sylius_gift_cards.default_currency_code'))
         ->arg('$defaultExpirationDelay', param('macbim_sylius_gift_cards.default_expiration_delay'))
         ->arg('$giftCardCodeGenerator', service('macbim_sylius_gift_cards.generator.code_generator'))
-        ->arg('$giftCardChannelConfigurationProvider', service('macbim_sylius_gift_cards.provider.channel_configuration'));
+        ->arg('$giftCardChannelConfigurationProvider', service('macbim_sylius_gift_cards.provider.channel_configuration'))
+        ->arg('$clock', service('clock'));
 
     $services->alias(GiftCardFactoryInterface::class, 'macbim_sylius_gift_cards.factory.gift_card');
 

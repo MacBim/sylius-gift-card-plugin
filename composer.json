@@ -1,8 +1,12 @@
 {
+    "name": "macbim/sylius-gift-cards-plugin",
+    "description": "Gift cards plugin for Sylius",
     "type": "sylius-plugin",
     "keywords": [
         "sylius",
-        "sylius-plugin"
+        "sylius-plugin",
+        "gift cards",
+        "giftcards"
     ],
     "license": "proprietary",
     "require": {

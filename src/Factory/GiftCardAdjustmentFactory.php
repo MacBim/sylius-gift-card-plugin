@@ -28,6 +28,7 @@ final class GiftCardAdjustmentFactory implements GiftCardAdjustmentFactoryInterf
             type: AdjustmentInterface::ORDER_PROMOTION_ADJUSTMENT,
             label: 'gift_card',
             amount: -$amount,
+            neutral: false,
             details: [
                 'amount' => $amount,
                 'initial_amount' => $giftCard->getInitialAmount(),

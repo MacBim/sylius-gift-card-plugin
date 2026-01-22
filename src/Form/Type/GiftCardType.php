@@ -15,6 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class GiftCardType extends AbstractResourceType
@@ -60,6 +62,16 @@ final class GiftCardType extends AbstractResourceType
             ->add('customer', CustomerChoiceType::class, [
                 'label' => 'macbim_sylius_gift_cards.form.gift_card.customer',
             ]);
+
+        $builder
+            ->addEventListener(FormEvents::POST_SUBMIT, static function (FormEvent $event) {
+                /** @var GiftCardInterface|null $data */
+                $data = $event->getData();
+
+                if ($data instanceof GiftCardInterface && null === $data->getInitialAmount()) {
+                    $data->setInitialAmount($data->getAmount());
+                }
+            });
     }
 
     public function configureOptions(OptionsResolver $resolver): void

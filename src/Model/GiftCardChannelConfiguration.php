@@ -28,7 +28,7 @@ class GiftCardChannelConfiguration implements GiftCardChannelConfigurationInterf
     private ChannelInterface $channel;
 
     #[ORM\Column(name: 'expiration_delay', type: Types::STRING)]
-    public string $expirationDelay;
+    private string $expirationDelay;
 
     public function getId(): ?int
     {
