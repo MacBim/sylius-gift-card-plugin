@@ -20,7 +20,7 @@ final class MacbimSyliusGiftCardsExtension extends AbstractResourceExtension imp
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         /**
          * @var array{

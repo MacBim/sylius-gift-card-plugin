@@ -12,8 +12,7 @@ final class UniqueGiftCardCodeGenerator implements GiftCardCodeGeneratorInterfac
     public function __construct(
         private readonly RepositoryInterface $giftCardRepository,
         private readonly int $codeLength,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws RandomException

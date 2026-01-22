@@ -16,8 +16,7 @@ final class GiftCardAdjustmentFactory implements GiftCardAdjustmentFactoryInterf
      */
     public function __construct(
         private readonly AdjustmentFactoryInterface $adjustmentFactory,
-    ) {
-    }
+    ) {}
 
     public function createNewForGiftCard(GiftCardInterface $giftCard, OrderInterface $order): AdjustmentInterface
     {

@@ -9,8 +9,7 @@ final class DecreaseGiftCardAmountModifierWorkflow extends AbstractAmountModifie
 {
     public function __construct(
         private readonly GiftCardAmountModifierInterface $giftCardAmountModifier,
-    ) {
-    }
+    ) {}
 
     protected function doModifyAmount(GiftCardInterface $giftCard, int $amount): void
     {

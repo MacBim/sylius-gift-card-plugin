@@ -12,8 +12,7 @@ class GiftCardIsNotExpiredEligibilityChecker implements GiftCardEligibilityCheck
 {
     public function __construct(
         private readonly ClockInterface $clock,
-    ) {
-    }
+    ) {}
 
     public function isEligible(GiftCardInterface $giftCard, OrderInterface $order): bool
     {

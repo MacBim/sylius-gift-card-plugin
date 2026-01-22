@@ -17,8 +17,7 @@ class CachedGiftChannelCardChannelConfigurationProvider implements GiftCardChann
 
     public function __construct(
         private readonly GiftCardChannelConfigurationRepositoryInterface $configurationRepository,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws ChannelConfigurationNotFoundException
@@ -42,8 +41,8 @@ class CachedGiftChannelCardChannelConfigurationProvider implements GiftCardChann
         /* @var GiftCardChannelConfigurationInterface|null $channelConfiguration */
         try {
             $channelConfiguration = $this->configurationRepository->findOneByChannel($channel);
-        } catch (NonUniqueResultException) {
-            throw new ChannelConfigurationNotFoundException(sprintf('Multiple channel configurations found for channel "%s"', $channel->getCode()));
+        } catch (NonUniqueResultException $e) {
+            throw new ChannelConfigurationNotFoundException(sprintf('Multiple channel configurations found for channel "%s"', $channel->getCode()), previous: $e);
         }
 
         if (null === $channelConfiguration) {

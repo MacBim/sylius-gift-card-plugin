@@ -14,8 +14,7 @@ final class CreateGiftCard
     public function __construct(
         private readonly GiftCardFactoryInterface $giftCardFactory,
         private readonly EntityManagerInterface $entityManager,
-    ) {
-    }
+    ) {}
 
     public function __invoke(OrderInterface $order): void
     {

@@ -23,8 +23,7 @@ final class GiftCardFactory implements GiftCardFactoryInterface
         private readonly string $defaultExpirationDelay,
         private readonly GiftCardCodeGeneratorInterface $giftCardCodeGenerator,
         private readonly GiftCardChannelConfigurationProviderInterface $giftCardChannelConfigurationProvider,
-    ) {
-    }
+    ) {}
 
     public function createNew(): GiftCardInterface
     {

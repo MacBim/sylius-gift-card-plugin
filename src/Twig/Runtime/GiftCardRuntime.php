@@ -13,8 +13,7 @@ class GiftCardRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
         private readonly GiftCardRepositoryInterface $giftCardRepository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return iterable<GiftCardInterface>

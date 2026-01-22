@@ -11,8 +11,7 @@ final class DisableGiftCardsOnRefund
 {
     public function __construct(
         private readonly GiftCardRepositoryInterface $giftCardRepository,
-    ) {
-    }
+    ) {}
 
     public function __invoke(OrderInterface $order): void
     {

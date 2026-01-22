@@ -14,8 +14,7 @@ class CompositeGiftCardEligibilityChecker implements GiftCardEligibilityCheckerI
      */
     public function __construct(
         private readonly iterable $checkers,
-    ) {
-    }
+    ) {}
 
     public function isEligible(GiftCardInterface $giftCard, OrderInterface $order): bool
     {
