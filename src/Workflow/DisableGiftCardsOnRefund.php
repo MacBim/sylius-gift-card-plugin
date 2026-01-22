@@ -18,7 +18,7 @@ final class DisableGiftCardsOnRefund
     {
         // At this point, if we have a refund, the order has already been paid and fulfilled.
         // Which means that gift cards have already been created and linked to an OrderItemUnit.
-        $giftCards = $this->giftCardRepository->findForOrder($order);
+        $giftCards = $this->giftCardRepository->findCreatedByOrder($order);
 
         foreach ($giftCards as $giftCard) {
             $giftCard->setEnabled(false);

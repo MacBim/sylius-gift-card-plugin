@@ -11,6 +11,7 @@ macbim_sylius_gift_cards_admin_gift_card:
             all:
                 header: macbim_sylius_gift_cards.ui.gift_cards.header
                 subheader: macbim_sylius_gift_cards.ui.gift_cards.subheader
+                breadcrumb: macbim_sylius_gift_cards.ui.gift_cards.breadcrumb
                 templates:
                     form: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCard/_form.html.twig"
             index:
@@ -30,6 +31,7 @@ macbim_sylius_gift_cards_admin_gift_card_channel_configuration:
             all:
                 header: macbim_sylius_gift_cards.ui.channel_configuration.header
                 subheader: macbim_sylius_gift_cards.ui.channel_configuration.subheader
+                breadcrumb: macbim_sylius_gift_cards.ui.channel_configuration.breadcrumb
                 templates:
                     form: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCardChannelConfiguration/_form.html.twig"
             index:

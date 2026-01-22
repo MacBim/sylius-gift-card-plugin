@@ -21,13 +21,18 @@ sylius_grid:
                     label: sylius.ui.customer
                     options:
                         fields: [ customer.email, customer.firstName, customer.lastName ]
-                date:
+                createdAt:
                     type: date
-                    label: sylius.ui.date
+                    label: sylius.ui.created
                     options:
                         field: createdAt
                         inclusive_to: true
-
+                expiresAt:
+                    type: date
+                    label: macbim_sylius_gift_cards.ui.expires_at
+                    options:
+                        field: expiresAt
+                        inclusive_to: true
             fields:
                 code:
                     type: string
@@ -36,6 +41,12 @@ sylius_grid:
                 createdAt:
                     type: datetime
                     label: sylius.ui.created
+                    sortable: ~
+                    options:
+                        format: '%macbim_sylius_gift_cards.grid.date_format%'
+                expiresAt:
+                    type: datetime
+                    label: macbim_sylius_gift_cards.ui.expires_at
                     sortable: ~
                     options:
                         format: '%macbim_sylius_gift_cards.grid.date_format%'

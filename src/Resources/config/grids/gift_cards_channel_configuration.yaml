@@ -8,16 +8,37 @@ sylius_grid:
                     repository:
                         method: createListQueryBuilder
             sorting:
-                id: desc
-            fields:
-                id:
+                code: desc
+            filters:
+                code:
                     type: string
-                    enabled: false
-                    sortable: ~
+                    label: sylius.ui.code
+                channel:
+                    type: entity
+                    label: sylius.ui.channel
+                    form_options:
+                        class: "%sylius.model.channel.class%"
+                enabled:
+                    type: boolean
+                    label: sylius.ui.enabled
+            fields:
                 code:
                     type: string
                     label: sylius.ui.code
                     sortable: ~
+                channel:
+                    type: twig
+                    label: sylius.ui.channel
+                    options:
+                        template: "@MacbimSyliusGiftCardsPlugin/Admin/GiftCardChannelConfiguration/Grid/Field/channel.html.twig"
+                expirationDelay:
+                    type: string
+                    label: macbim_sylius_gift_cards.ui.expiration_delay
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    options:
+                        template: "@SyliusUi/Grid/Field/enabled.html.twig"
             actions:
                 main:
                     create:

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Macbim\SyliusGiftCardsPlugin\Provider;
 
+use Doctrine\ORM\NonUniqueResultException;
 use Macbim\SyliusGiftCardsPlugin\Exception\ChannelConfigurationNotFoundException;
 use Macbim\SyliusGiftCardsPlugin\Model\GiftCardChannelConfigurationInterface;
 use Macbim\SyliusGiftCardsPlugin\Repository\GiftCardChannelConfigurationRepositoryInterface;
@@ -38,8 +39,13 @@ class CachedGiftChannelCardChannelConfigurationProvider implements GiftCardChann
      */
     private function doProvideConfigurationForChannel(ChannelInterface $channel): GiftCardChannelConfigurationInterface
     {
-        /** @var GiftCardChannelConfigurationInterface|null $channelConfiguration */
-        $channelConfiguration = $this->configurationRepository->findOneBy(['channel' => $channel]);
+        /* @var GiftCardChannelConfigurationInterface|null $channelConfiguration */
+        try {
+            $channelConfiguration = $this->configurationRepository->findOneByChannel($channel);
+        } catch (NonUniqueResultException) {
+            throw new ChannelConfigurationNotFoundException(sprintf('Multiple channel configurations found for channel "%s"', $channel->getCode()));
+        }
+
         if (null === $channelConfiguration) {
             throw new ChannelConfigurationNotFoundException(sprintf('No configuration found for channel "%s"', $channel->getCode()));
         }

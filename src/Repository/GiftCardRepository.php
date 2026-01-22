@@ -17,6 +17,15 @@ class GiftCardRepository extends EntityRepository implements GiftCardRepositoryI
         return $this->createQueryBuilder('g');
     }
 
+    public function createOrderGiftCardsListQueryBuilder(OrderInterface $order): QueryBuilder
+    {
+        return $this->createQueryBuilder('g')
+            ->innerJoin('g.orderItemUnit', 'oiu')
+            ->innerJoin('oiu.orderItem', 'oi')
+            ->andWhere('oi.order = :orderId')
+            ->setParameter('orderId', $order);
+    }
+
     /**
      * @return iterable<GiftCardInterface>
      */
@@ -45,13 +54,9 @@ class GiftCardRepository extends EntityRepository implements GiftCardRepositoryI
     /**
      * @return iterable<GiftCardInterface>
      */
-    public function findForOrder(OrderInterface $order): iterable
+    public function findCreatedByOrder(OrderInterface $order): iterable
     {
-        return $this->createQueryBuilder('g')
-            ->innerJoin('g.orderItemUnit', 'oiu')
-            ->innerJoin('oiu.orderItem', 'oi')
-            ->andWhere('oi.order = :order')
-            ->setParameter('order', $order)
+        return $this->createOrderGiftCardsListQueryBuilder($order)
             ->getQuery()
             ->getResult();
     }

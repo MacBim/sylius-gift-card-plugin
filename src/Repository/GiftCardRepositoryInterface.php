@@ -31,5 +31,5 @@ interface GiftCardRepositoryInterface extends RepositoryInterface
     /**
      * @return iterable<GiftCardInterface>
      */
-    public function findForOrder(OrderInterface $order): iterable;
+    public function findCreatedByOrder(OrderInterface $order): iterable;
 }

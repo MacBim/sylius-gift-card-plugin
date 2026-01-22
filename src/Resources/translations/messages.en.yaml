@@ -5,16 +5,19 @@ macbim_sylius_gift_cards:
             created_by_this_order: Gift cards created by this order
             no_gift_cards_created_by_this_order: No gift cards have been created by this order
             header: Gift cards
+            breadcrumb: Gift cards
             subheader: Manage your gift cards
             manually_created: Manually created via the admin
         channel_configuration:
             header: Gift card channel configuration
             subheader: Configure gift card by channels
+            breadcrumb: Gift card channel configuration
         code: Code
         initial_amount: Initial amount
         amount: Amount
         expires_at: Expires at
         enabled: Enabled
+        expiration_delay: Expiration delay
     form:
         gift_card:
             customer: Customer

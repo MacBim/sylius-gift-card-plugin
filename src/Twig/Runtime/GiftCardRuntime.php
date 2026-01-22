@@ -21,6 +21,6 @@ class GiftCardRuntime implements RuntimeExtensionInterface
      */
     public function getGiftCardsCreatedByOrder(OrderInterface $order): iterable
     {
-        return $this->giftCardRepository->findForOrder($order);
+        return $this->giftCardRepository->findCreatedByOrder($order);
     }
 }
