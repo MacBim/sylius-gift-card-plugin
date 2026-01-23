@@ -23,5 +23,8 @@ jobs:
             -   name: Run PHP CS Fixer
                 run: vendor/bin/php-cs-fixer check --diff --verbose
 
-            -   name: Run PHPUnit Tests (Unit)
+            -   name: Run PHPUnit Tests (Unit suite)
                 run: vendor/bin/phpunit --testsuite=Unit
+                
+            -   name: Run PHPUnit Tests (Functional suite)
+                run: vendor/bin/phpunit --testsuite=Functional
