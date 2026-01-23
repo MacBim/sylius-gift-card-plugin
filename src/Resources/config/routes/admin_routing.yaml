@@ -37,3 +37,12 @@ macbim_sylius_gift_cards_admin_gift_card_channel_configuration:
             index:
                 icon: 'cogs'
     type: sylius.resource
+    
+macbim_sylius_gift_cards_admin_download_gift_card_pdf:
+    path: /gift-cards/{code}/download-pdf
+    methods: [GET]
+    defaults:
+        _controller: macbim_sylius_gift_cards.action.gift_cards.download_pdf
+        _sylius:
+            section: admin
+            permission: true

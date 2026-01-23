@@ -11,11 +11,11 @@ return static function (ContainerConfigurator $container): void {
     $services = $container->services();
 
     $services
-        ->set('macbim_gift_card_plugin.twig.runtime.gift_card', GiftCardRuntime::class)
+        ->set('macbim_sylius_gift_cards.twig.runtime.gift_card', GiftCardRuntime::class)
         ->arg('$giftCardRepository', service('macbim_sylius_gift_cards.repository.gift_card'))
         ->tag('twig.runtime');
 
     $services
-        ->set('macbim_gift_card_plugin.twig.extension.gift_card', GiftCardExtension::class)
+        ->set('macbim_sylius_gift_cards.twig.extension.gift_card', GiftCardExtension::class)
         ->tag('twig.extension');
 };

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Unit\Factory;
 
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardAdjustmentFactory;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardAdjustmentFactory;
 use Macbim\SyliusGiftCardsPlugin\Model\GiftCard;
 use Macbim\SyliusGiftCardsPlugin\Model\GiftCardInterface;
 use Macbim\SyliusGiftCardsPlugin\Model\OrderInterface;

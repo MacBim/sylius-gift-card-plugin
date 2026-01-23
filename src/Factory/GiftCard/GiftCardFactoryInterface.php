@@ -1,6 +1,6 @@
 <?php
 
-namespace Macbim\SyliusGiftCardsPlugin\Factory;
+namespace Macbim\SyliusGiftCardsPlugin\Factory\GiftCard;
 
 use Macbim\SyliusGiftCardsPlugin\Model\GiftCardInterface;
 use Sylius\Component\Core\Model\ChannelInterface;

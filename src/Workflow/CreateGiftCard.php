@@ -3,7 +3,7 @@
 namespace Macbim\SyliusGiftCardsPlugin\Workflow;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardFactoryInterface;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardFactoryInterface;
 use Macbim\SyliusGiftCardsPlugin\Model\OrderInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\CustomerInterface;

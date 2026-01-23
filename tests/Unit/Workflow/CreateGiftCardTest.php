@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Unit\Workflow;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardFactoryInterface;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardFactoryInterface;
 use Macbim\SyliusGiftCardsPlugin\Model\GiftCard;
 use Macbim\SyliusGiftCardsPlugin\Workflow\CreateGiftCard;
 use PHPUnit\Framework\Attributes\CoversClass;
