@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Unit\Processor;
 
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardAdjustmentFactoryInterface;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardAdjustmentFactoryInterface;
 use Macbim\SyliusGiftCardsPlugin\Processor\GiftCardOrderProcessor;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

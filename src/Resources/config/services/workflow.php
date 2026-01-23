@@ -16,19 +16,19 @@ return static function (ContainerConfigurator $container): void {
         ->public();
 
     $services
-        ->set('macbim_gift_card_plugin.workflow.decrement_amount', DecreaseGiftCardAmountModifierWorkflow::class)
+        ->set('macbim_sylius_gift_cards.workflow.decrement_amount', DecreaseGiftCardAmountModifierWorkflow::class)
         ->arg('$giftCardAmountModifier', service('macbim_sylius_gift_cards.modifier.amount_modifier'));
 
     $services
-        ->set('macbim_gift_card_plugin.workflow.increase_amount', IncreaseGiftCardAmountModifierWorkflow::class)
+        ->set('macbim_sylius_gift_cards.workflow.increase_amount', IncreaseGiftCardAmountModifierWorkflow::class)
         ->arg('$giftCardAmountModifier', service('macbim_sylius_gift_cards.modifier.amount_modifier'));
 
     $services
-        ->set('macbim_gift_card_plugin.workflow.create_gift_cards', CreateGiftCard::class)
+        ->set('macbim_sylius_gift_cards.workflow.create_gift_cards', CreateGiftCard::class)
         ->arg('$giftCardFactory', service('macbim_sylius_gift_cards.custom_factory.gift_card'))
         ->arg('$entityManager', service('doctrine.orm.entity_manager'));
 
     $services
-        ->set('macbim_gift_card_plugin.workflow.disable_gift_cards_on_refund', DisableGiftCardsOnRefund::class)
+        ->set('macbim_sylius_gift_cards.workflow.disable_gift_cards_on_refund', DisableGiftCardsOnRefund::class)
         ->arg('$giftCardRepository', service('macbim_sylius_gift_cards.repository.gift_card'));
 };

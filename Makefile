@@ -11,7 +11,7 @@ build:
 	${DOCKER_COMPOSE_CMD} build
 
 up:
-	$(DOCKER_COMPOSE_CMD) up -d
+	$(DOCKER_COMPOSE_CMD) up -d --remove-orphans
 
 down:
 	$(DOCKER_COMPOSE_CMD) down --volumes
@@ -24,9 +24,6 @@ cache-clear:
 
 phpunit:
 	${PHP_CMD} vendor/bin/phpunit
-
-phpspec:
-	${PHP_CMD} vendor/bin/phpspec run --ansi --no-interaction -f dot
 
 phpstan:
 	${PHP_CMD} vendor/bin/phpstan analyse
@@ -43,12 +40,11 @@ install:
 backend:
 	${SF_CONSOLE_CMD} doctrine:database:drop --if-exists --force
 	${SF_CONSOLE_CMD} sylius:install --no-interaction
-	${SF_CONSOLE_CMD} doctrine:schema:update --force
+	${SF_CONSOLE_CMD} doctrine:schema:update --force --complete
 	$(SF_CONSOLE_CMD) sylius:fixtures:load default --no-interaction
 
 frontend:
-	${PHP_CMD} cd tests/Application && yarn install --pure-lockfile
-	${PHP_CMD} (cd tests/Application && GULP_ENV=prod yarn build)
+	${PHP_CMD} tests/Application/frontend.sh
 
 behat:
 	APP_ENV=test vendor/bin/behat --colors --strict --no-interaction -vvv -f progress

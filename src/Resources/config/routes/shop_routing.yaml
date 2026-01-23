@@ -1,0 +1,7 @@
+macbim_sylius_gift_cards_shop_download_gift_card_pdf:
+    path: /account/gift-cards/{code}/download-pdf
+    methods: [GET]
+    defaults:
+        _controller: macbim_sylius_gift_cards.action.gift_cards.download_pdf
+        _sylius:
+            permission: true

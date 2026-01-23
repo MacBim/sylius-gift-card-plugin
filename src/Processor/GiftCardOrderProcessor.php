@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Macbim\SyliusGiftCardsPlugin\Processor;
 
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardAdjustmentFactoryInterface;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardAdjustmentFactoryInterface;
 use Macbim\SyliusGiftCardsPlugin\Model\OrderInterface;
 use Sylius\Component\Order\Model\OrderInterface as BaseOrderInterface;
 use Sylius\Component\Order\Processor\OrderProcessorInterface;

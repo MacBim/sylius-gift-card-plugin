@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardAdjustmentFactory;
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardAdjustmentFactoryInterface;
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardFactory;
-use Macbim\SyliusGiftCardsPlugin\Factory\GiftCardFactoryInterface;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardAdjustmentFactory;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardAdjustmentFactoryInterface;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardFactory;
+use Macbim\SyliusGiftCardsPlugin\Factory\GiftCard\GiftCardFactoryInterface;
+use Macbim\SyliusGiftCardsPlugin\Factory\Pdf\DefaultResponseFactory;
+use Macbim\SyliusGiftCardsPlugin\Factory\Pdf\PdfResponseFactoryInterface;
 
 return static function (ContainerConfigurator $container): void {
     $container
@@ -34,4 +36,10 @@ return static function (ContainerConfigurator $container): void {
         ->arg('$adjustmentFactory', service('sylius.factory.adjustment'));
 
     $services->alias(GiftCardAdjustmentFactoryInterface::class, 'macbim_sylius_gift_cards.factory.gift_card_adjustment');
+
+    $services
+        ->set('macbim_sylius_gift_cards.factory.pdf_response', DefaultResponseFactory::class)
+        ->arg('$giftCardPdfContentRenderer', service('macbim_sylius_gift_cards.renderer.pdf_content_renderer'));
+
+    $services->alias(PdfResponseFactoryInterface::class, 'macbim_sylius_gift_cards.factory.pdf_response');
 };

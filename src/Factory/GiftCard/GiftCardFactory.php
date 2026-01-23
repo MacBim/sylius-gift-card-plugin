@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Macbim\SyliusGiftCardsPlugin\Factory;
+namespace Macbim\SyliusGiftCardsPlugin\Factory\GiftCard;
 
 use Macbim\SyliusGiftCardsPlugin\Exception\ChannelConfigurationNotFoundException;
 use Macbim\SyliusGiftCardsPlugin\Generator\GiftCardCodeGeneratorInterface;

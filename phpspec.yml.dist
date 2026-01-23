@@ -1,4 +1,0 @@
-suites:
-    main:
-        namespace: Macbim\SyliusGiftCardsPlugin
-        psr4_prefix: Macbim\SyliusGiftCardsPlugin

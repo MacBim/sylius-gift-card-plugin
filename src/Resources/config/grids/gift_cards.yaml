@@ -82,3 +82,11 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
+                    download:
+                        type: show
+                        label: macbim_sylius_gift_cards.ui.gift_cards.download_pdf
+                        options:
+                            link:
+                                route: macbim_sylius_gift_cards_admin_download_gift_card_pdf
+                                parameters:
+                                    code: resource.code

@@ -8,6 +8,7 @@ macbim_sylius_gift_cards:
             breadcrumb: Gift cards
             subheader: Manage your gift cards
             manually_created: Manually created via the admin
+            download_pdf: Download PDF
         channel_configuration:
             header: Gift card channel configuration
             subheader: Configure gift card by channels

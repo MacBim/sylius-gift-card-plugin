@@ -31,6 +31,8 @@ services:
             MYSQL_ROOT_PASSWORD: mysql
         ports:
             - ${MYSQL_PORT:-3306}:3306
+        volumes:
+            - ./.docker/data/mysql:/var/lib/mysql:delegated
         networks:
             - sylius
 
