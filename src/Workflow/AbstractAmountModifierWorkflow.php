@@ -30,7 +30,7 @@ abstract class AbstractAmountModifierWorkflow
             /** @var array{amount: int, initial_amount: int, code: string} $details */
             $details = $adjustment->getDetails();
             if (!isset($appliedGiftCards[$details['code']])) {
-                throw new \RuntimeException(sprintf('Order has an adjustment for a gift card (%s) that was not applied', $details['code']));
+                throw new \LogicException(sprintf('Order has an adjustment for a gift card (%s) that was not applied', $details['code']));
             }
 
             $giftCard = $appliedGiftCards[$details['code']];

@@ -41,7 +41,5 @@ final class CreateGiftCard
                 $this->entityManager->persist($giftCard);
             }
         }
-
-        $this->entityManager->flush();
     }
 }
