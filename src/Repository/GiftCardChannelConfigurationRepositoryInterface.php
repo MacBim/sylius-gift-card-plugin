@@ -19,5 +19,5 @@ interface GiftCardChannelConfigurationRepositoryInterface extends RepositoryInte
     /**
      * @throws NonUniqueResultException
      */
-    public function findOneByChannel(ChannelInterface $channel): ?GiftCardChannelConfigurationInterface;
+    public function findOneEnabledByChannel(ChannelInterface $channel): ?GiftCardChannelConfigurationInterface;
 }

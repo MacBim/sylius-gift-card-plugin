@@ -10,21 +10,22 @@ class GiftCardAmountModifier implements GiftCardAmountModifierInterface
 {
     public function decreaseAmount(GiftCardInterface $giftCard, int $amount): void
     {
-        if ($amount >= $giftCard->getAmount()) {
+        $newAmount = max(0, $giftCard->getAmount() - $amount);
+
+        $giftCard->setAmount($newAmount);
+
+        if (0 === $giftCard->getAmount()) {
             $giftCard->setEnabled(false);
-            $giftCard->setAmount(0);
-        }
-
-        if ($amount < $giftCard->getAmount()) {
-            $giftCard->setEnabled(true);
-
-            $giftCard->setAmount($giftCard->getAmount() - $amount);
         }
     }
 
     public function increaseAmount(GiftCardInterface $giftCard, int $amount): void
     {
-        $amount = min($giftCard->getAmount() + $amount, $giftCard->getInitialAmount() ?? 0);
+        if (null === $giftCard->getInitialAmount()) {
+            throw new \LogicException(sprintf('Gift card "%s" has no initial amount.', $giftCard->getCode()));
+        }
+
+        $amount = min($giftCard->getAmount() + $amount, $giftCard->getInitialAmount());
 
         $giftCard->setAmount($amount);
     }

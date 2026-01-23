@@ -20,22 +20,12 @@ final class UniqueGiftCardCodeGenerator implements GiftCardCodeGeneratorInterfac
     public function generate(): string
     {
         do {
-            $code = $this->doGenerate();
-        } while (mb_strlen($code) !== $this->codeLength && $this->exists($code));
+            $hash = bin2hex(random_bytes(20));
+
+            $code = strtoupper(substr($hash, 0, $this->codeLength));
+        } while ($this->exists($code));
 
         return $code;
-    }
-
-    /**
-     * @throws RandomException
-     */
-    private function doGenerate(): string
-    {
-        $code = bin2hex(random_bytes($this->codeLength));
-        /** @var string $code */
-        $code = preg_replace('/[01]/', '', $code); // remove hard to read characters
-
-        return mb_strtoupper(mb_substr($code, 0, $this->codeLength));
     }
 
     private function exists(string $code): bool

@@ -20,7 +20,7 @@ class GiftCardChannelConfigurationRepository extends EntityRepository implements
     /**
      * @throws NonUniqueResultException
      */
-    public function findOneByChannel(ChannelInterface $channel): ?GiftCardChannelConfigurationInterface
+    public function findOneEnabledByChannel(ChannelInterface $channel): ?GiftCardChannelConfigurationInterface
     {
         return $this->createQueryBuilder('gcc')
             ->andWhere('gcc.channel = :channel')
